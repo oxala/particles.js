@@ -8,7 +8,7 @@
  */
 
 /* exported Particles */
-var Particles = (function(window, document) {
+var Particles = function(window, document) {
   'use strict';
 
   var Plugin, Particle = {};
@@ -544,16 +544,16 @@ var Particles = (function(window, document) {
   })();
 
   return new Plugin();
-})(window, document);
+};
 
 (function() {
   'use strict';
 
   if(typeof define === 'function' && define.amd) {
-    define('Particles', function () { return Particles; });
+    define('Particles', function () { return Particles(window, document); });
   } else if(typeof module !== 'undefined' && module.exports) {
     module.exports = Particles;
   } else {
-    window.Particles = Particles;
+    window.Particles = Particles(window, document);
   }
 })();
